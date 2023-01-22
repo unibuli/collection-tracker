@@ -14,9 +14,9 @@ export function shipMeetsCriteria(shipname, criteria){
             return true;
         case "Merit Shop":
             return true;
-        case "Exchange Shop":
+        case "Core Data Exchange":
             return true;
-        case "Core Shop":
+        case "War Archives":
             return true;
         default:
             return true

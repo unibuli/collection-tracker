@@ -1,12 +1,20 @@
 
 
 import { ShipCollectionManager } from './collection_management.js';
-import { initializeFilters, toggleCollectionDisplay } from './filters.js';
+import { FilterManager } from './filters.js';
+
 
 
 const ShowCollectedBtn = document.querySelector('.collected-toggle')
 ShowCollectedBtn.addEventListener("click", () => toggleCollectionDisplay())
 
-new ShipCollectionManager()
+function toggleCollectionDisplay(){
 
-initializeFilters()
+    const allships = document.querySelectorAll('.ship-tile')
+    for(const tile of allships){
+        tile.classList.toggle('hide-collected')
+    }
+}
+
+new ShipCollectionManager()
+new FilterManager()
