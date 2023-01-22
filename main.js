@@ -18,3 +18,4 @@ function toggleCollectionDisplay(){
 
 new ShipCollectionManager()
 new FilterManager()
+
