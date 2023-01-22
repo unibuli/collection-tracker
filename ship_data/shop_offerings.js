@@ -28,7 +28,6 @@ export function GetCoreDataShips() {
 export function GetGuildShips() {
 
     const ships = [
-        "Rare",
         "Fletcher",
         "Phoenix",
         "Portland",
@@ -36,7 +35,6 @@ export function GetGuildShips() {
         "Amazon",
         "Shouhou",
         "Jamaica",
-        "Elite",
         "Helena",
         "Cleveland",
         "London",
@@ -55,7 +53,6 @@ export function GetGuildShips() {
         "Harutsuki",
         "Admiral Hipper",
         "U-557",
-        "Limited Event",
         "Benson",
         "Bailey",
         "Yuugure",
