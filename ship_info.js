@@ -221,10 +221,6 @@ export class ShipCodex {
         console.log(this.MapDrops)
     }
 
-
-
-
-
     shipIsAvailable(shipname, criteria){
 
         switch(criteria){
@@ -247,7 +243,7 @@ export class ShipCodex {
             case "Merit Shop":
                 return this.MeritShop.has(shipname);
 
-            case "Core Data Exchange":
+            case "Core Data":
                 return this.CoreDataExchange.has(shipname);
 
             case "War Archives":
@@ -258,8 +254,4 @@ export class ShipCodex {
         }
     }
 }
-
-
-
-
 
