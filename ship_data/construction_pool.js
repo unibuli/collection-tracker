@@ -28,7 +28,7 @@ export function GetConstructionPool(){
         "Black Prince",
         "Chang Chun",
         "Chao Ho",
-        "Clevelad",
+        "Cleveland",
         "Cleveland µ",
         "Denver",
         "Fubuki",
