@@ -3,6 +3,7 @@
 import { GetMapDrops } from "./ship_data/map_drops.js"
 import { GetCoreDataShips, GetGuildShips, GetMeritShips } from "./ship_data/shop_offerings.js"
 import { GetUltraRareShips, GetSuperRareShips, GetEliteShips, GetRareShips, GetNormalShips } from "./ship_data/rarity_info.js"
+import { GetConstructionPool } from "./ship_data/construction_pool.js"
 
 export class ShipCodex {
 
@@ -34,12 +35,17 @@ export class ShipCodex {
     LearnShipSources() {
 
         this.learnMapDrops()
-        this.addShipsToSet(GetCoreDataShips(), this.CoreDataExchange)
-        this.addShipsToSet(GetCoreDataShips(), this.AllShips)
-        this.addShipsToSet(GetGuildShips(), this.GuildShop)
-        this.addShipsToSet(GetGuildShips(), this.AllShips)
-        this.addShipsToSet(GetMeritShips(), this.MeritShop)
-        this.addShipsToSet(GetMeritShips(), this.AllShips)
+
+        this.LearnShipSource(GetConstructionPool(), this.ConstructionPool)
+        this.LearnShipSource(GetCoreDataShips(), this.CoreDataExchange)
+        this.LearnShipSource(GetGuildShips(), this.GuildShop)
+        this.LearnShipSource(GetMeritShips(), this.MeritShop)
+    }
+
+    LearnShipSource(source, destination) {
+
+        this.addShipsToSet(source, destination)
+        this.addShipsToSet(source, this.AllShips)
     }
 
     LoadRarityInfo() {
@@ -89,6 +95,7 @@ export class ShipCodex {
         for (const ship of this.AllShips.keys()) {
             result.push(ship)
         }
+        result.sort()
 
         return result
     }
@@ -97,8 +104,7 @@ export class ShipCodex {
 
         const AllChapters = GetMapDrops()
         for (const Chapter of AllChapters) {
-            this.addShipsToSet(Chapter, this.MapDrops)
-            this.addShipsToSet(Chapter, this.AllShips)
+            this.LearnShipSource(Chapter, this.MapDrops)
         }
     }
 
