@@ -1,42 +1,40 @@
 
-
 // manages how ships are added to & from collection state
 
 import { ShipCodex } from "./ship_info.js"
-
+import { RarityTable } from "./rarity_table.js"
 
 export class ShipCollectionManager {
 
-    constructor(){
+    constructor() {
 
         this.collected = new Set()
         this.codex = new ShipCodex()
 
+        this.RarityTable = new RarityTable()
 
         this.spawnTiles()
-
         this.addShipTileListeners()
         this.readFromLocalStorage()
         this.applyCollectionState()
-
     }
 
-    spawnTiles(){
+    spawnTiles() {
 
         const normalBox = document.getElementById('normalbox')
         const rareBox = document.getElementById('rarebox')
         const eliteBox = document.getElementById('elitebox')
         const superBox = document.getElementById('superbox')
 
-        for(const shipname of this.codex.getKnownShips()){
+        for (const shipname of this.codex.getKnownShips()) {
 
-            const rarity = this.codex.getShipRarity(shipname)
+            const rarity = this.RarityTable.getShipRarity(shipname)
             const tile = document.createElement("button")
             tile.classList.add("ship-tile")
 
             tile.innerText = shipname
 
-            switch (rarity){
+            switch (rarity) {
                 case "Normal":
                     normalBox.appendChild(tile)
                     break
@@ -56,69 +54,69 @@ export class ShipCollectionManager {
         }
     }
 
-    readFromLocalStorage(){
+    readFromLocalStorage() {
 
         const knownCollection = JSON.parse(localStorage.getItem("user_collection"))
-    
-        if(knownCollection){
-            for(const shipname of knownCollection){
+
+        if (knownCollection) {
+            for (const shipname of knownCollection) {
                 this.addToCollection(shipname)
             }
-        }    
+        }
     }
-    
-    
-    updateLocalStorage(){
-    
+
+
+    updateLocalStorage() {
+
         const collectedNames = this.collected.values()
-    
+
         const namesArray = []
-        for(const shipname of collectedNames){
+        for (const shipname of collectedNames) {
             namesArray.push(shipname)
         }
-    
+
         localStorage.setItem("user_collection", JSON.stringify(namesArray))
-    
+
     }
-    
-    applyCollectionState(){
-    
+
+    applyCollectionState() {
+
         const allships = document.querySelectorAll('.ship-tile')
-        for(const tile of allships){
+        for (const tile of allships) {
             const shipname = tile.innerText
-            if(this.collected.has(shipname)){
+            if (this.collected.has(shipname)) {
                 tile.classList.add('collected')
             }
         }
     }
-    
-    addToCollection(shipname){
-    
+
+    addToCollection(shipname) {
+
         this.collected.add(shipname)
         console.log(this.collected)
         this.updateLocalStorage()
     }
-    
-    removeFromCollection(shipname){
-    
-        if(this.collected.has(shipname)){
+
+    removeFromCollection(shipname) {
+
+        if (this.collected.has(shipname)) {
             this.collected.delete(shipname)
         }
         console.log(this.collected)
         this.updateLocalStorage()
     }
-    
-    
-    addShipTileListeners(){
-    
+
+
+    addShipTileListeners() {
+
         const allships = document.querySelectorAll('.ship-tile')
-        for(const tile of allships){
+        for (const tile of allships) {
             tile.addEventListener("click", () => {
-    
+
                 const shipname = tile.innerText
                 tile.classList.toggle('collected')
-    
-                if(tile.classList.contains('collected')){
+
+                if (tile.classList.contains('collected')) {
                     this.addToCollection(shipname)
                 } else {
                     this.removeFromCollection(shipname)
@@ -126,9 +124,5 @@ export class ShipCollectionManager {
             })
         }
     }
-
 }
-
-
-
 
