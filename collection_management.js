@@ -36,8 +36,6 @@ export class ShipCollectionManager {
 
             tile.innerText = shipname
 
-            console.log(rarity)
-
             switch (rarity){
                 case "Normal":
                     normalBox.appendChild(tile)
@@ -51,7 +49,7 @@ export class ShipCollectionManager {
                     eliteBox.appendChild(tile)
                     break
 
-                case "Super":
+                case "Super Rare":
                     superBox.appendChild(tile)
                     break
             }
@@ -61,8 +59,6 @@ export class ShipCollectionManager {
     readFromLocalStorage(){
 
         const knownCollection = JSON.parse(localStorage.getItem("user_collection"))
-    
-        console.log(knownCollection)
     
         if(knownCollection){
             for(const shipname of knownCollection){
@@ -75,7 +71,6 @@ export class ShipCollectionManager {
     updateLocalStorage(){
     
         const collectedNames = this.collected.values()
-        console.log(collectedNames)
     
         const namesArray = []
         for(const shipname of collectedNames){

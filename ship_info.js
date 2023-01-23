@@ -2,11 +2,11 @@
 
 import { GetMapDrops } from "./ship_data/map_drops.js"
 import { GetCoreDataShips, GetGuildShips, GetMeritShips } from "./ship_data/shop_offerings.js"
-
+import { GetUltraRareShips, GetSuperRareShips, GetEliteShips, GetRareShips, GetNormalShips } from "./ship_data/rarity_info.js"
 
 export class ShipCodex {
 
-    constructor(){
+    constructor() {
 
         this.AllShips = new Set()
 
@@ -20,66 +20,98 @@ export class ShipCodex {
         this.ResearchShips = new Set()
         this.WarArchives = new Set()
 
+        this.KnownRarities = ["Normal", "Rare", "Elite", "Ultra Rare", "Super Rare"]
+        this.RarityNormal = new Set()
+        this.RarityRare = new Set()
+        this.RarityElite = new Set()
+        this.RaritySuperRare = new Set()
+        this.RarityUltraRare = new Set()
+
+        this.LoadRarityInfo()
+        this.LearnShipSources()
+    }
+
+    LearnShipSources() {
+
         this.learnMapDrops()
         this.addShipsToSet(GetCoreDataShips(), this.CoreDataExchange)
+        this.addShipsToSet(GetCoreDataShips(), this.AllShips)
         this.addShipsToSet(GetGuildShips(), this.GuildShop)
+        this.addShipsToSet(GetGuildShips(), this.AllShips)
         this.addShipsToSet(GetMeritShips(), this.MeritShop)
-
-        console.log(this.MeritShop)
+        this.addShipsToSet(GetMeritShips(), this.AllShips)
     }
 
-    getShipRarity(shipname){
+    LoadRarityInfo() {
 
-        console.log(shipname.charAt(0))
-
-        if(shipname.charAt(0) == 'A'){
-            return "Normal"
-        }
-
-        if(shipname.charAt(0) == 'F'){
-            return "Rare"
-        }
-
-        if(shipname.charAt(0) == 'M'){
-            return "Elite"
-        }
-
-        if(shipname.charAt(0) == 'R'){
-            return "Super"
-        }
-
-        return "Super"
+        this.addShipsToSet(GetNormalShips(), this.RarityNormal)
+        this.addShipsToSet(GetRareShips(), this.RarityRare)
+        this.addShipsToSet(GetEliteShips(), this.RarityElite)
+        this.addShipsToSet(GetSuperRareShips(), this.RaritySuperRare)
+        this.addShipsToSet(GetUltraRareShips(), this.RarityUltraRare)
     }
 
-    getKnownShips(){
+    shipIsOfRarity(shipname, rarity) {
+
+        switch (rarity) {
+            case "Normal":
+                return this.RarityNormal.has(shipname)
+
+            case "Rare":
+                return this.RarityRare.has(shipname)
+
+            case "Elite":
+                return this.RarityElite.has(shipname)
+
+            case "Super Rare":
+                return this.RaritySuperRare.has(shipname)
+
+            case "Ultra Rare":
+                return this.RarityUltraRare.has(shipname)
+        }
+    }
+
+    getShipRarity(shipname) {
+
+        for (const rarity of this.KnownRarities) {
+            if (this.shipIsOfRarity(shipname, rarity)) {
+                return rarity
+            }
+        }
+
+        console.log(`Error: Couldn't find rarity for ship: ${shipname}`)
+        return "Normal"
+    }
+
+    getKnownShips() {
 
         const result = []
-        for(const ship of this.AllShips.keys()){
+        for (const ship of this.AllShips.keys()) {
             result.push(ship)
         }
 
         return result
     }
 
-    learnMapDrops(){
+    learnMapDrops() {
 
         const AllChapters = GetMapDrops()
-        for(const Chapter of AllChapters){
+        for (const Chapter of AllChapters) {
             this.addShipsToSet(Chapter, this.MapDrops)
+            this.addShipsToSet(Chapter, this.AllShips)
         }
     }
 
-    addShipsToSet(ships, destination){
+    addShipsToSet(ships, destination) {
 
-        for(const shipname of ships){
+        for (const shipname of ships) {
             destination.add(shipname)
-            this.AllShips.add(shipname)
         }
     }
 
-    shipIsAvailable(shipname, criteria){
+    shipIsAvailable(shipname, criteria) {
 
-        switch(criteria){
+        switch (criteria) {
 
             case "Map Drop":
                 return this.MapDrops.has(shipname);

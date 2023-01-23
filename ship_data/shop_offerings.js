@@ -71,7 +71,7 @@ export function GetGuildShips() {
         "Arashio",
         "Memphis",
         "Hazelwood",
-        "Nagatsuk",
+        "Nagatsuki",
     ]
     
     return ships
