@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.banner{
+.banner {
     width: 100vw;
     height: 20vh;
     display: flex;
@@ -12,30 +12,30 @@
     flex-direction: column;
 }
 
-.banner .toggles-box{
+.banner .toggles-box {
     padding: 10px 10px;
     margin: auto;
 }
 
-.banner .filters-box{
+.banner .filters-box {
     margin: auto;
     padding: 10px 10px;
     height: auto;
 }
 
-.banner .filter-tile{
+.banner .filter-tile {
     background-color: transparent;
     color: grey;
     height: 3.5vh;
     width: 7vw;
 }
 
-.banner .filter-tile.filter-active{
+.banner .filter-tile.filter-active {
     color: black;
     background-color: white;
 }
 
-.banner h1{
+.banner h1 {
     margin: auto;
     width: 25vw;
     text-align: center;
@@ -51,7 +51,7 @@ body {
     padding-top: 3rem;
 }
 
-.ships-container{
+.ships-container {
     margin: auto;
     color: white;
     background-color: black;
@@ -60,7 +60,7 @@ body {
     flex-direction: row;
 }
 
-.ship-column{
+.ship-column {
     margin: 10px 10px;
     background-color: pink;
     background-color: transparent;
@@ -80,17 +80,49 @@ body {
     width: 18vw;
 }
 
+#normalbox .ship-tile {
+    background-color: #A6A6A6;
+}
+
+#rarebox .ship-tile {
+    background-color: #8ECEE3;
+}
+
+#elitebox .ship-tile {
+    background-color: #A18ED1;
+}
+
+#superbox .ship-tile {
+    background-color: #F0C503;
+}
+
+#normalbox .ship-tile.collected {
+    background-color: transparent;
+}
+
+#rarebox .ship-tile.collected {
+    background-color: transparent;
+}
+
+#elitebox .ship-tile.collected {
+    background-color: transparent;
+}
+
+#superbox .ship-tile.collected {
+    background-color: transparent;
+}
+
 .ship-tile.collected {
-    color: #BBA14F ;
+    color: #BBA14F;
     border: 2px solid #BBA14F;
     background-color: transparent;
 }
 
-.ship-tile:hover{
+.ship-tile:hover {
     cursor: pointer;
 }
 
-.ship-tile:active{
+.ship-tile:active {
     background-color: blue;
 }
 
