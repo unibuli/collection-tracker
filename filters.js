@@ -29,8 +29,6 @@ export class FilterManager {
         const filters = document.querySelectorAll('.filter-tile')
         const activeFilters = new Set()
     
-        console.log(activeFilters)
-    
         for(const filter of filters){
             if(filter.classList.contains('filter-active')){
                 activeFilters.add(filter.innerText)
