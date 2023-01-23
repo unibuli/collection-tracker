@@ -1,6 +1,6 @@
 
 
-export function GetUltraRareShips() {
+export function getUltraRareShips() {
 
     const UltraRare = [
         "Specialized Bulin Custom MKIII",
@@ -25,7 +25,7 @@ export function GetUltraRareShips() {
 }
 
 
-export function GetSuperRareShips() {
+export function getSuperRareShips() {
 
     const SuperRare = [
         "Prototype Bulin MKII",
@@ -231,7 +231,7 @@ export function GetSuperRareShips() {
     return SuperRare
 }
 
-export function GetEliteShips() {
+export function getEliteShips() {
 
     const Elite = [
         "Universal Bulin",
@@ -486,7 +486,7 @@ export function GetEliteShips() {
     return Elite
 }
 
-export function GetRareShips() {
+export function getRareShips() {
 
     const Rare = [
         "Dewey",
@@ -604,7 +604,7 @@ export function GetRareShips() {
     return Rare
 }
 
-export function GetNormalShips() {
+export function getNormalShips() {
 
     const Normal = [
         "Cassin",

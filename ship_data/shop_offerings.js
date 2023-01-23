@@ -1,6 +1,6 @@
 
 
-export function GetCoreDataShips() {
+export function getCoreDataShips() {
 
     const ships = [
         "Illustrious µ",
@@ -25,7 +25,7 @@ export function GetCoreDataShips() {
 }
 
 
-export function GetGuildShips() {
+export function getGuildShips() {
 
     const ships = [
         "Fletcher",
@@ -73,12 +73,12 @@ export function GetGuildShips() {
         "Hazelwood",
         "Nagatsuki",
     ]
-    
+
     return ships
 }
 
 
-export function GetMeritShips() {
+export function getMeritShips() {
 
     const ships = [
         "Prototype Bulin MKII",
@@ -117,3 +117,4 @@ export function GetMeritShips() {
 
     return ships
 }
+

@@ -1,5 +1,5 @@
 
-export function GetMapDrops(){
+export function getMapDrops() {
 
     const Chapter_1 = [
         "Comet",
@@ -20,7 +20,7 @@ export function GetMapDrops(){
         "Omaha",
         "Raleigh",
     ]
-    
+
     const Chapter_2 = [
         "Ayanami",
         "Javelin",
@@ -53,7 +53,7 @@ export function GetMapDrops(){
         "Beagle",
         "Bulldog",
     ]
-    
+
     const Chapter_3 = [
         "Hiryuu",
         "Houston",
@@ -81,8 +81,8 @@ export function GetMapDrops(){
         "Yorktown",
         "Portland",
     ]
-    
-    
+
+
     const Chapter_4 = [
         "Saratoga",
         "Phoenix",
@@ -95,7 +95,7 @@ export function GetMapDrops(){
         "Unicorn",
         "Amazon",
     ]
-    
+
     const Chapter_5 = [
         "Helena",
         "Z1",
@@ -106,7 +106,7 @@ export function GetMapDrops(){
         "Juneau",
         "Hornet",
     ]
-    
+
     const Chapter_6 = [
         "Vestal",
         "Ikazuchi",
@@ -118,13 +118,13 @@ export function GetMapDrops(){
         "Ark Royal",
         "Yuudachi",
     ]
-    
-    
+
+
     const Chapter_7 = [
         "Isuzu",
         "Houshou",
     ]
-    
+
     const Chapter_8 = [
         "Abukuma",
         "Nachi",
@@ -132,14 +132,14 @@ export function GetMapDrops(){
         "Maya",
         "Richmond",
     ]
-    
+
     const Chapter_9 = [
         "Jenkins",
         "Radford",
         "Nicholas",
         "Niizuki",
     ]
-    
+
     const Chapter_10 = [
         "Mikazuki",
         "Minazuki",
@@ -147,24 +147,24 @@ export function GetMapDrops(){
         "St. Louis",
         "Jintsuu",
     ]
-    
+
     const Chapter_11 = [
         "Agano",
         "Sendai",
         "Columbia",
     ]
-    
+
     const Chapter_12 = [
         "Hiyou",
         "Junyou",
         "Choukai",
     ]
-    
+
     const Chapter_13 = [
         "Dewey",
         "Bunker Hill",
     ]
-    
+
     const Chapter_14 = [
         "Ashigara",
         "Denver",
@@ -173,19 +173,19 @@ export function GetMapDrops(){
         "New Orleans",
         "Mogami",
     ]
-    
+
     const AllChapters = [
-        Chapter_1, 
+        Chapter_1,
         Chapter_2,
-        Chapter_3, 
+        Chapter_3,
         Chapter_4,
-        Chapter_5, 
+        Chapter_5,
         Chapter_6,
-        Chapter_7, 
+        Chapter_7,
         Chapter_8,
-        Chapter_9, 
+        Chapter_9,
         Chapter_10,
-        Chapter_11, 
+        Chapter_11,
         Chapter_12,
         Chapter_13,
         Chapter_14,

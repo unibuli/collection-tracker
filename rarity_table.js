@@ -1,6 +1,6 @@
 
 
-import { GetUltraRareShips, GetSuperRareShips, GetEliteShips, GetRareShips, GetNormalShips } from "./ship_data/rarity_info.js"
+import { getUltraRareShips, getSuperRareShips, getEliteShips, getRareShips, getNormalShips } from "./ship_data/rarity_info.js"
 
 export class RarityTable {
 
@@ -13,16 +13,16 @@ export class RarityTable {
         this.RaritySuperRare = new Set()
         this.RarityUltraRare = new Set()
 
-        this.LoadRarityInfo()
+        this.loadRarityInfo()
     }
 
-    LoadRarityInfo() {
+    loadRarityInfo() {
 
-        this.addShipsToSet(GetNormalShips(), this.RarityNormal)
-        this.addShipsToSet(GetRareShips(), this.RarityRare)
-        this.addShipsToSet(GetEliteShips(), this.RarityElite)
-        this.addShipsToSet(GetSuperRareShips(), this.RaritySuperRare)
-        this.addShipsToSet(GetUltraRareShips(), this.RarityUltraRare)
+        this.addShipsToSet(getNormalShips(), this.RarityNormal)
+        this.addShipsToSet(getRareShips(), this.RarityRare)
+        this.addShipsToSet(getEliteShips(), this.RarityElite)
+        this.addShipsToSet(getSuperRareShips(), this.RaritySuperRare)
+        this.addShipsToSet(getUltraRareShips(), this.RarityUltraRare)
     }
 
     addShipsToSet(ships, destination) {
