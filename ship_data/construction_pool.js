@@ -1,7 +1,5 @@
 
-
-
-export function GetConstructionPool(){
+export function getConstructionPool() {
 
     const constructionPool = [
         "Allen M. Sumner",
@@ -277,7 +275,5 @@ export function GetConstructionPool(){
     ]
 
     return constructionPool
-
 }
-
 
