@@ -3,6 +3,7 @@
 import { getMapDrops } from "./ship_data/map_drops.js"
 import { getCoreDataShips, getGuildShips, getMeritShips } from "./ship_data/shop_offerings.js"
 import { getConstructionPool } from "./ship_data/construction_pool.js"
+import { getRequisitionShips, getMedalShopShips } from "./ship_data/requisition.js"
 
 export class ShipCodex {
 
@@ -11,7 +12,7 @@ export class ShipCodex {
         this.AllShips = new Set()
 
         // sources to add
-        this.RequisitionPool = new Set()
+        
         this.ResearchShips = new Set()
         this.WarArchives = new Set()
 
@@ -36,6 +37,12 @@ export class ShipCodex {
 
         this.MeritShop = new Set()
         this.learnShipSource(getMeritShips(), this.MeritShop)
+
+        this.RequisitionPool = new Set()
+        this.learnShipSource(getRequisitionShips(), this.RequisitionPool)
+
+        this.MedalShips = new Set()
+        this.learnShipSource(getMedalShopShips(), this.MedalShips)
     }
 
     learnShipSource(source, destination) {
@@ -65,7 +72,7 @@ export class ShipCodex {
                 return this.RequisitionPool.has(shipname);
 
             case "Medal Shop":
-                return false;
+                return this.MedalShips.has(shipname);
 
             case "Merit Shop":
                 return this.MeritShop.has(shipname);
