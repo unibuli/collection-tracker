@@ -50,6 +50,10 @@ export class ShipCollectionManager {
                 case "Super Rare":
                     superBox.appendChild(tile)
                     break
+
+                case "Ultra Rare":
+                    superBox.appendChild(tile)
+                    break
             }
         }
     }

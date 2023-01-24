@@ -12,7 +12,7 @@ export function getUltraRareShips() {
         "Ulrich von Hutten",
         "Kronshtadt",
         "Yorktown II",
-        "Friedrich der Große",
+        "Friedrich der Grobe",
         "Plymouth",
         "Brest",
         "Azuma",
