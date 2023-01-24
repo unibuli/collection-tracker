@@ -4,6 +4,7 @@ import { getMapDrops } from "./ship_data/map_drops.js"
 import { getCoreDataShips, getGuildShips, getMeritShips } from "./ship_data/shop_offerings.js"
 import { getConstructionPool } from "./ship_data/construction_pool.js"
 import { getRequisitionShips, getMedalShopShips } from "./ship_data/requisition.js"
+import { getResearchShips } from "./ship_data/research_ships.js"
 
 export class ShipCodex {
 
@@ -12,8 +13,6 @@ export class ShipCodex {
         this.AllShips = new Set()
 
         // sources to add
-        
-        this.ResearchShips = new Set()
         this.WarArchives = new Set()
 
         this.compileShipSources()
@@ -43,6 +42,9 @@ export class ShipCodex {
 
         this.MedalShips = new Set()
         this.learnShipSource(getMedalShopShips(), this.MedalShips)
+
+        this.ResearchShips = new Set()
+        this.learnShipSource(getResearchShips(), this.ResearchShips)
     }
 
     learnShipSource(source, destination) {
