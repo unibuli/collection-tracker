@@ -2,6 +2,7 @@
 // manages how ships are added to & from collection state
 
 import { RarityTable } from "./rarity_table.js"
+import { rebuildStats } from './statistics.js';
 
 export class ShipCollectionManager {
 
@@ -111,6 +112,7 @@ export class ShipCollectionManager {
 
                 const shipname = tile.innerText
                 tile.classList.toggle('collected')
+                rebuildStats()
 
                 if (tile.classList.contains('collected')) {
                     this.addToCollection(shipname)
