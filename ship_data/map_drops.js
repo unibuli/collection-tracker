@@ -82,7 +82,6 @@ export function getMapDrops() {
         "Portland",
     ]
 
-
     const Chapter_4 = [
         "Saratoga",
         "Phoenix",
@@ -118,7 +117,6 @@ export function getMapDrops() {
         "Ark Royal",
         "Yuudachi",
     ]
-
 
     const Chapter_7 = [
         "Isuzu",
@@ -191,5 +189,13 @@ export function getMapDrops() {
         Chapter_14,
     ]
 
-    return AllChapters
+    const allShips = []
+    for (const chapter of AllChapters) {
+
+        for (const shipname of chapter) {
+            allShips.push(shipname)
+        }
+    }
+
+    return allShips
 }
