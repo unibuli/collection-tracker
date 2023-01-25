@@ -1,7 +1,6 @@
 
 // manages how ships are added to & from collection state
 
-import { ShipCodex } from "./ship_info.js"
 import { RarityTable } from "./rarity_table.js"
 
 export class ShipCollectionManager {
@@ -9,8 +8,6 @@ export class ShipCollectionManager {
     constructor() {
 
         this.collected = new Set()
-        this.codex = new ShipCodex()
-
         this.RarityTable = new RarityTable()
 
         this.spawnTiles()
@@ -26,7 +23,7 @@ export class ShipCollectionManager {
         const eliteBox = document.getElementById('elitebox')
         const superBox = document.getElementById('superbox')
 
-        for (const shipname of this.codex.getKnownShips()) {
+        for (const shipname of this.RarityTable.getAllShips()) {
 
             const rarity = this.RarityTable.getShipRarity(shipname)
             const tile = document.createElement("button")
@@ -61,7 +58,6 @@ export class ShipCollectionManager {
     readFromLocalStorage() {
 
         const knownCollection = JSON.parse(localStorage.getItem("user_collection"))
-
         if (knownCollection) {
             for (const shipname of knownCollection) {
                 this.addToCollection(shipname)
@@ -72,14 +68,12 @@ export class ShipCollectionManager {
     updateLocalStorage() {
 
         const collectedNames = this.collected.values()
-
         const namesArray = []
         for (const shipname of collectedNames) {
             namesArray.push(shipname)
         }
 
         localStorage.setItem("user_collection", JSON.stringify(namesArray))
-
     }
 
     applyCollectionState() {

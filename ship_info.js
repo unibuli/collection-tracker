@@ -1,5 +1,4 @@
 
-
 import { getMapDrops } from "./ship_data/map_drops.js"
 import { getCoreDataShips, getGuildShips, getMeritShips } from "./ship_data/shop_offerings.js"
 import { getConstructionPool } from "./ship_data/construction_pool.js"
@@ -89,23 +88,18 @@ export class ShipCodex {
             case "War Archives":
                 return this.WarArchives.has(shipname);
 
-            case "Event/Collab":
-                return false;
+            case "Limited":
+                const categories = ["Map Drop", "Construction", "Requisition", "Medal Shop", "Merit Shop", "Guild Shop", "Core Data", "Research", "War Archives"]
+                for (const criteria of categories){
+                    if (this.shipIsAvailable(shipname, criteria)){
+                        return false
+                    }
+                }
+                return true;
 
             default:
                 return false;
         }
-    }
-
-    getKnownShips() {
-
-        const result = []
-        for (const ship of this.AllShips.keys()) {
-            result.push(ship)
-        }
-        result.sort()
-
-        return result
     }
 }
 
