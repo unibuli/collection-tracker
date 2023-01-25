@@ -1,5 +1,6 @@
 
 import { ShipCodex } from './ship_info.js';
+import { rebuildStats } from './statistics.js';
 
 export class FilterManager {
 
@@ -11,6 +12,7 @@ export class FilterManager {
         this.activeFilters = new Set()
         this.initializeFilters()
         this.addResetButton()
+        this.filterDisplayedShips()
     }
 
     addResetButton() {
@@ -34,7 +36,6 @@ export class FilterManager {
     setAllFiltersTo(choice) {
 
         const filters = document.querySelectorAll('.filter-tile')
-
         for (const filter of filters) {
             this.setFilterTo(filter, choice)
         }
@@ -101,6 +102,8 @@ export class FilterManager {
         for (const ship of allships) {
             this.filterTile(ship)
         }
+
+        rebuildStats()
     }
 
     filterTile(ship) {
