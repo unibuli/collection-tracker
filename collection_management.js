@@ -2,7 +2,6 @@
 // manages how ships are added to & from collection state
 
 import { RarityTable } from "./rarity_table.js"
-import { rebuildStats } from './statistics.js';
 
 export class ShipCollectionManager {
 
@@ -15,6 +14,19 @@ export class ShipCollectionManager {
         this.addShipTileListeners()
         this.readFromLocalStorage()
         this.applyCollectionState()
+        this.updateStats()
+    }
+
+    updateStats() {
+
+        const collected = this.collected.size
+        const total = this.RarityTable.getNumberOfShips()
+
+        const percentage = (total == 0) ? 0 : 100 * collected / total
+        const displayValue = percentage.toFixed(1)
+
+        const title = document.getElementById("collection-stats")
+        title.innerText = `${collected}/${total} (${displayValue}%)`
     }
 
     spawnTiles() {
@@ -91,7 +103,6 @@ export class ShipCollectionManager {
     addToCollection(shipname) {
 
         this.collected.add(shipname)
-        console.log(this.collected)
         this.updateLocalStorage()
     }
 
@@ -100,7 +111,6 @@ export class ShipCollectionManager {
         if (this.collected.has(shipname)) {
             this.collected.delete(shipname)
         }
-        console.log(this.collected)
         this.updateLocalStorage()
     }
 
@@ -112,13 +122,14 @@ export class ShipCollectionManager {
 
                 const shipname = tile.innerText
                 tile.classList.toggle('collected')
-                rebuildStats()
 
                 if (tile.classList.contains('collected')) {
                     this.addToCollection(shipname)
                 } else {
                     this.removeFromCollection(shipname)
                 }
+
+                this.updateStats()
             })
         }
     }

@@ -16,6 +16,18 @@ export class RarityTable {
         this.loadRarityInfo()
     }
 
+    getNumberOfShips(){
+
+        var result = 0
+        const raritySets = [this.RarityNormal, this.RarityRare, this.RarityElite, this.RaritySuperRare, this.RarityUltraRare]
+
+        for(const raritySet of raritySets){
+            result += raritySet.size
+        }
+
+        return result
+    }
+
     getAllShips() {
 
         const result = []

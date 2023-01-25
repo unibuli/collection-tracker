@@ -1,6 +1,5 @@
 
 import { ShipCodex } from './ship_info.js';
-import { rebuildStats } from './statistics.js';
 
 export class FilterManager {
 
@@ -102,8 +101,6 @@ export class FilterManager {
         for (const ship of allships) {
             this.filterTile(ship)
         }
-
-        rebuildStats()
     }
 
     filterTile(ship) {
