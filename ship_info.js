@@ -11,19 +11,16 @@ export class ShipCodex {
     constructor() {
 
         this.AllShips = new Set()
+        this.compileShipSources()
 
         // sources to add
         this.WarArchives = new Set()
-
-        this.compileShipSources()
     }
 
     compileShipSources() {
 
         this.MapDrops = new Set()
-        for (const Chapter of getMapDrops()) {
-            this.learnShipSource(Chapter, this.MapDrops)
-        }
+        this.learnShipSource(getMapDrops(), this.MapDrops)
 
         this.ConstructionPool = new Set()
         this.learnShipSource(getConstructionPool(), this.ConstructionPool)

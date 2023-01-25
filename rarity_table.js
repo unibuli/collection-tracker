@@ -37,16 +37,12 @@ export class RarityTable {
         switch (rarity) {
             case "Normal":
                 return this.RarityNormal.has(shipname)
-
             case "Rare":
                 return this.RarityRare.has(shipname)
-
             case "Elite":
                 return this.RarityElite.has(shipname)
-
             case "Super Rare":
                 return this.RaritySuperRare.has(shipname)
-
             case "Ultra Rare":
                 return this.RarityUltraRare.has(shipname)
         }

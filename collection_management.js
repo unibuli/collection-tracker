@@ -69,7 +69,6 @@ export class ShipCollectionManager {
         }
     }
 
-
     updateLocalStorage() {
 
         const collectedNames = this.collected.values()
@@ -109,7 +108,6 @@ export class ShipCollectionManager {
         console.log(this.collected)
         this.updateLocalStorage()
     }
-
 
     addShipTileListeners() {
 
